@@ -1,0 +1,7 @@
+## inversify
+
+1. configurar tsconfig.json
+2. di-container.ts  -> dependency Injection
+3. dependecies.ts(connections, servcices) -> agregar @injetable a las clases
+4. services.ts -> agregar @injectable a la clase, agregar @inject a los a tributos en el contructor
+5. principal.ts -> Llamar el DICOntainer para usar (DIContainer.resolve<Service>(Service);)

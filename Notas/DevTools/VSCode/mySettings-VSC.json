@@ -1,0 +1,107 @@
+{
+    "git.enabled": false,
+    "editor.fonFamily": "'Droid Sans Mono', 'monospace', monospace, 'Droid Sans Fallback','DejaVu Sans Mono Book', 'Consolas','PowerlineSymbols Medium'",
+    "editor.fontSize": 15,
+    "editor.wordWrap": "wordWrapColumn",
+    "files.autoSave": "onWindowChange",
+    "workbench.startupEditor": "newUntitledFile",
+    "workbench.iconTheme": "material-icon-theme",
+    "workbench.colorTheme": "One Monokai",
+    "editor.linkedEditing": true,
+    "editor.fontLigatures": true,
+    "vim.leader": "<space>",
+    "vim.searchHighlightColor": "#cd84f1",
+    "vim.autoindent": true,
+    "vim.ignorecase":  true,
+    "vim.incsearch":true,
+    "vim.useSystemClipboard": true,
+    "vim.showcmd":false,
+    "workbench.colorCustomizations": {
+    "activityBarBadge.background": "#ffc600",
+    "editorCursor.foreground": "#ffc600",
+/*     "inputValidation.errorBorder": "#ffc600", */ 
+/*     "panel.border": "#ffc600", */
+/*     "panelTitle.activeBorder": "#ffc600", */
+/*     "panelTitle.activeForeground": "#ffc600", */
+/*     "peekView.border": "#ffc600", */
+/*     "peekViewTitleLabel.foreground": "#ffc600", */
+/*     "tab.activeBorder": "#ffc600", */
+    "statusBar.border": "#ffc600"
+},   
+    "workbench.nvimColorNormal": "#ffc600",
+    "workbench.nvimColorInsert": "#D32F2F",
+    "workbench.nvimColorVisual": "#673AB7",
+    "vim.handleKeys": {
+        "<C-a>": false,
+        "<C-f>": false
+    },
+    "vim.insertModeKeyBindings": [
+        {
+            "before": [
+                "j",
+                "j"
+            ],
+            "after": [
+                "<Esc>"
+            ]
+        }
+    ],
+    "vim.normalModeKeyBindingsNonRecursive": [
+/*         borrar */
+        {
+            "before": [
+                "<leader>",
+                "d"
+            ],
+            "after": [
+                "d",
+                "d"
+            ]
+        },
+        {
+            "before": [
+                "<C-n>"
+            ],
+            "commands": [
+                ":nohl"
+            ]
+        },
+        {
+            "before": [
+                "<C-j>"
+            ],
+            "after": [
+                "<C-w>",
+                "j"
+            ]
+        },
+        {
+            "before": [
+                "<C-k>"
+            ],
+            "after": [
+                "<C-w>",
+                "k"
+            ]
+        },
+        {
+            "before": [
+                "<C-h>"
+            ],
+            "after": [
+                "<C-w>",
+                "h"
+            ]
+        },
+        {
+            "before": [
+                "<C-l>"
+            ],
+            "after": [
+                "<C-w>",
+                "l"
+            ]
+        }
+       
+    ]
+}

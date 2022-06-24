@@ -1,0 +1,24 @@
+GIT HUB CLI
+
+https://cli.github.com/manual/
+
+## gh browse
+gh browse [<number> | <path>] [flags]
+
+Open the GitHub repository in the web browser.
+
+Options
+-b, --branch <string>
+Select another branch by passing in the branch name
+-c, --commit
+Open the last commit
+-n, --no-browser
+Print destination URL instead of opening the browser
+-p, --projects
+Open repository projects
+-R, --repo <[HOST/]OWNER/REPO>
+Select another repository using the [HOST/]OWNER/REPO format
+-s, --settings
+Open repository settings
+-w, --wiki
+Open repository wiki

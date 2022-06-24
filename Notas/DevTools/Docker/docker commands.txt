@@ -1,0 +1,123 @@
+docker pull nameImage:n -> descargar imagen de dockerhub 
+docker run nameImage -> corre imagen y si no la encuentra la descarga
+-d: dicach -> corre la imagen en background
+-p: puerto,  ex:	'-p 3000:3000'  
+-v: volumen, ex:	'/Doc/projects/ejemplo-docker/app/etc:/etc/todo' -> permite persistencia de datos bidireccional
+
+
+docker ps -> ver contenedores que corren
+docker ps -a -> todos los contenedores que corrieron un tiempo
+
+
+docker start IDCONTAINER -> levanta un contenedor ya cerrado.
+docker stop IDCONTAINER -> detiene un contenedor
+
+
+docker logs IDCONTAINER|namecontainer  -> levanta contenedor en background
+-f: foreground
+
+docker exec -it IDCONTAINER sh -> ejecuta una funcion dentro del contenedor
+-i: interactive
+-t: terminal 
+
+docker build -t  my-app:v2 .
+-t: title 
+-v2-> segunda version
+
+##### DOCKERFILE
+
+FROM node:10-alpine
+WORKDIR /srv/app
+COPY . .
+RUN npm install
+RUN apk update 
+RUN apk add --no-cache tzdata
+ENV TZ America/Lima
+EXPOSE 3001
+
+CMD ["node", "index.js"]
+#####
+
+##### DOCKER-COMPOSE
+# docker-compose -h ->Ver documentacion
+# docker-compose command -h -> Ver doc
+
+version: "3.7"
+
+services:
+
+#docker run -dp 3000:3000 --network todo-app -e MYSQL_HOST=mysql -e MYSQL_USER=root -e MYSQL_PASSWORD=secret -e MYSQL_DB=todos getting-started:v2
+
+  app:
+    image: pablokbs/getting-started:v2
+    ports:
+      - 3000:3000
+    environment:
+      MYSQL_HOST: mysql
+      MYSQL_USER: root
+      MYSQL_PASSWORD: secret
+      MYSQL_DB: todos
+  
+# docker run -d     --network todo-app --network-alias mysql     -v todo-mysql-data:/var/lib/mysql     -e MYSQL_ROOT_PASSWORD=secret     -e MYSQL_DATABASE=todos     mysql:5.7
+
+  mysql:
+    image: mysql:5.7
+    volumes:
+      - ./todo-mysql-data:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: secret
+      MYSQL_DATABASE: todos
+
+#####
+
+
+##UTILS
+docker login ->Inicie sesión en Docker Hub
+docker rm IDCONTAINER -> Elimine el contenedor de la ventana acoplable con el ID del contenedor
+docker rmi IDIMAGE -> Eliminar image
+docker restart IDCONTAINER -> Reinicie el contenedor
+docker build --no-cache -t u12_core -f u12_core .  -> construir imagen sin cache viejo
+docker volumen [flags] -> -h para ver las banderas disponibles
+
+###Mas
+docker tag IDIMAGE usuarioNameDockerHub/my-app:v2 -> agregar/renombrar nombre usuario para subir a dockerhub
+
+docker push usuarioNameDockerHub/my-app:v2 -> subir image a dockerHub
+
+### DOCKER-COMPOSE COMMANDS
+
+#docker-compose [commands]
+
+ build       Build or rebuild services
+  convert     Converts the compose file to platform's canonical format
+  cp          Copy files/folders between a service container and the local filesystem
+  create      Creates containers for a service.
+  down        Stop and remove containers, networks
+  events      Receive real time events from containers.
+  exec        Execute a command in a running container.
+  images      List images used by the created containers
+  kill        Force stop service containers.
+  logs        View output from containers
+  ls          List running compose projects
+  pause       Pause services
+  port        Print the public port for a port binding.
+  ps          List containers
+  pull        Pull service images
+  push        Push service images
+  restart     Restart containers
+  rm          Removes stopped service containers
+  run         Run a one-off command on a service.
+  start       Start services
+  stop        Stop services
+  top         Display the running processes
+  unpause     Unpause services
+  up          Create and start containers
+  version     Show the Docker Compose version information
+
+
+
+### Reiniciar memoria virtual vmmem
+
+Restart-Service LxssManager
+
+
