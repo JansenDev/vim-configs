@@ -1,0 +1,85 @@
+#Import-Module git-aliases -DisableNameChecking
+oh-my-posh init pwsh --config "$(scoop prefix oh-my-posh)\themes\stelbent.minimal.omp.json" | Invoke-Expression
+Invoke-Expression -Command $(gh completion -s powershell | Out-String)
+# wsl --set-default-version 2
+#Invoke-Expression (&starship init powershell)
+
+# My cofigs
+cls
+
+# Alias
+Set-Alias -Name vim -Value nvim
+Set-Alias -Name vi -Value nvim
+
+# Set-Alias -Name env -Value  "Get-ChildItem -Path Env:\"
+
+
+function env{
+	Get-ChildItem -Path Env:\
+}
+
+function zsh{
+	C:\"Program Files"\Git\usr\bin\zsh.exe --login
+}
+
+## extensiones
+function l{
+lsd $args
+}
+
+
+## Git
+## Set-Alias -Name ga -Value 'git add .'
+
+function ga{
+git add . #$args
+}
+
+function cmder{
+cmd /k "F:\Program file\cmder\vendor\init.bat"
+}
+
+function gbash{
+C:\"Program Files"\Git\bin\sh.exe --login
+}
+
+
+## Docker
+
+function dd{
+echo "=>$ docker $args" 
+docker $args
+
+}
+
+function dc{
+echo "=>$ docker-compose $args"
+docker-compose $args
+}
+
+function go($path){
+  echo $path
+
+  cd F:/JanPc/$path
+ }  
+
+ function buondua($params){
+
+  $path_tmp=$PWD
+
+  cd e:
+  python F:\JanPc\Documents\Documentos\Projects\BuonduaDownload\main.py $params
+  cd $path_tmp
+
+ }
+## cd F:\JanPc\Documents\Documentos\Projects
+
+# Import the Chocolatey Profile that contains the necessary code to enable
+# tab-completions to function for `choco`.
+# Be aware that if you are missing these lines from your profile, tab completion
+# for `choco` will not function.
+# See https://ch0.co/tab-completion for details.
+$ChocolateyProfile = "$env:ChocolateyInstall\helpers\chocolateyProfile.psm1"
+if (Test-Path($ChocolateyProfile)) {
+  Import-Module "$ChocolateyProfile"
+}
