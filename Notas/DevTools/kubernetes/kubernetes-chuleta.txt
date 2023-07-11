@@ -1,0 +1,82 @@
+docker:
+docker es un tecnologia que te permite correr aplicaciones dentro de un contenedor+
+
+
+pod:
+Un pod puede contener 1 o mas contenedores
+
+
+
+####################
+
+minikube start -> iniciar cluster kubernetes
+minikube profile list  -> lista los clusters de minikube
+minikube start -p name_cluster -> arranca cluster con nombre x
+minikube delete -p name_cluster -> elimina determinado cluster
+
+
+minikube addons list -> lista los plugins de minikube
+minikube addons en anable name_addon -> habilita plugin por el nombre
+minikube name_addon -> ejecuta plugin instalado
+
+
+
+kubectl api-resources -> ver todos ls recursos, alias y tipos
+kubectl get ns -> listar namespaces
+
+kubectl -n name_de_namespace get pods -> obtener pods de un namespace 
+kubectl -n name_de_namespace get pods -o wide -> obtener pods de un namespace con un mas detalles
+
+kubectl -n name_de_namespace delete pod name_pod -> elimina/aniquila un pod por nombre
+
+
+kubectl apply -f context_file.yaml -> Crea un nuevo pod de un archivo manifiesto yaml
+
+kubectl exec -it name_pod -- sh -> Ver dentro del pod x defecto
+kubectl exec -it name_pod -c name_container -- sh -> Ver dentro del pod de un determinado contenedor(si es que hay varios)
+kubectl get pods -w  -> modo watch para ver los pods
+
+kubectl scale rc name_rc --replicas=n_replicas  -> modifica el numero replicas de ReplicationController desde terminal
+
+kubectl get pod[s] -> listar pods creados
+
+kubectl get pod name_pod -o yaml -> ver configuraciones(contexto) del pod
+
+kubectl get service -> obtiene todos los servicios
+kubectl get svc -> obtiene todos los servicios
+
+kubectl describe pod -> describe los pods
+
+kubectl describe pod pod_name -> Describe pod que se le paso x nombre
+
+kubectl delete pvc name_pvc ->eliminar un persistance volume claim	 
+
+kubect get nodes -> muestro los nodos
+
+
+kc delete po --all --force
+
+## rollups
+kc rollout history deployment name_pod  -> ver deployments anteriores
+kc rollout history deployment name_pod --revision=n ->	 ver cambios del deployment n
+
+kc rollout undo deploy name_pod --to-revision=n -> regresa al cambio anterior segun el id ingresado
+
+kc rollout status deploy name_pod -> ver logs/stados del pod en tiempo real y cuando termina de desplegar sale del modo watch
+
+kc annotate deploy name_pod kubernetes.io/change-cause="Version 1.20"
+
+#CREAR SECRETO CON KUBECTL
+kubectl create secret generic name_secret_file --from-literal=username=<usuario> --from-literal=password=<contraseña>
+
+kubectl logs demo -> ver logs de un pod
+
+kubectl get pods --selector 'name_label in (value_label1, value_label2)' -> Lista los pods que coincida con el selector
+kubectl get pods --selector 'name_label notin (value_label1, value_label2)' -> Lista los pods que no coincida con el selector
+kubectl get pods --show-labels -l name_label -> Lista los pods que no coincida con el label
+
+tipos de configs de contexto: Pods, deployment, daemonSet
+
+## plugins
+# Stern nos sirve para logs de varios pods que coincidan con el mismo patron
+Stern name_pod
