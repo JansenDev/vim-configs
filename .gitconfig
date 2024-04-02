@@ -1,0 +1,2 @@
+[alias]
+	env = !git archive --format=zip --remote=git@ssh.git HEAD:root/dev/env .env -o .env.zip && cp .env .env-backup || : && unzip -o .env.zip && rm -f .env.zip
