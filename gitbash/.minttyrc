@@ -1,0 +1,5 @@
+ThemeFile=dracula
+CursorType=block
+CursorBlinks=yes
+OpaqueWhenFocused=no
+Font=FiraCode Nerd Font Mono
