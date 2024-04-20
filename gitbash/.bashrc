@@ -1,7 +1,7 @@
 # Enable the subsequent settings only in interactive sessions
 case $- in
-  *i*) ;;
-    *) return;;
+*i*) ;;
+*) return ;;
 esac
 
 # Path to your oh-my-bash installation.
@@ -143,11 +143,25 @@ source "$OSH"/oh-my-bash.sh
 # alias bashconfig="mate ~/.bashrc"
 # alias ohmybash="mate ~/.oh-my-bash"
 
+
+export PATH="$PATH:$SCRIPTS_HOME"
+
+alias ls="lsd"
+#Execute alias
+alias edg="datagrip64.exe &"
+
+alias open="explorer"
+alias chromeg="chrome.exe google.com"
+
+google() {
+  start chrome "https://www.google.com/search?q=$*"
+}
+
+if [[ -n "$MSYSTEM" && "$MSYSTEM" == "MSYS" ]]; then
+  exec zsh
+fi
+
 # Mis variables de entorno
 export AWS_ACCESS_KEY_ID_ENV=""
 export AWS_SECRET_ACCESS_KEY_ENV=""
 export AWS_USERNAME_ENV=""
-
-
-alias ls="lsd"
-alias r="npm run"
