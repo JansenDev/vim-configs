@@ -158,7 +158,9 @@ google() {
 }
 
 if [[ -n "$MSYSTEM" && "$MSYSTEM" == "MSYS" ]]; then
-  exec zsh
+  if [[ -z $VSCODE_GIT_ASKPASS_NODE ]]; then
+    exec zsh
+  fi
 fi
 
 # Mis variables de entorno
