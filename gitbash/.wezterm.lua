@@ -28,10 +28,14 @@ config.window_frame = {
     button_hover_fg = '#ffffff',
     button_hover_bg = '#3b3052',
     font_size = 10.0,
-    -- border_left_width = '0.5cell',
-    -- border_right_width = '0.5cell',
-    -- border_bottom_height = '0.25cell',
-    -- border_top_height = '0.25cell',
+    -- border_left_width = '0.1cell',
+    -- border_right_width = '0.1cell',
+    -- border_bottom_height = '0.1cell',
+    -- border_top_height = '0.1cell',
+    border_left_color = '#5A8B11',
+    border_right_color = '#5A8B11',
+    border_bottom_color = '#5A8B11',
+    border_top_color = '#5A8B11'
 }
 
 config.colors = {
@@ -61,7 +65,7 @@ config.colors = {
         -- moves over inactive tabs
         inactive_tab_hover = {
             bg_color = '#5A8B11',
-            fg_color = '#E6E1DC',
+            fg_color = '#E6E1DC'
         },
 
         -- The new tab button that let you create new tabs
@@ -77,7 +81,7 @@ config.colors = {
         -- moves over the new tab button
         new_tab_hover = {
             bg_color = '#5A8B11',
-            fg_color = '#E6E1DC',
+            fg_color = '#E6E1DC'
         }
     }
 }
@@ -159,12 +163,22 @@ config.cursor_blink_rate = 800
 config.default_cursor_style = 'BlinkingBlock'
 
 -- term conf varios
-config.default_prog = {'C:/msys64/msys2_shell.cmd', '-defterm', '-here', '-no-start', '-msys'}
+config.default_prog = {'C:/msys64/msys2_shell.cmd', '-defterm', '-here', '-no-start', '-msys', '-shell', 'zsh'}
 
-config.window_decorations = "INTEGRATED_BUTTONS|RESIZE"
+-- config.window_decorations = "NONE"
+config.window_decorations = "INTEGRATED_BUTTONS"
+config.integrated_title_buttons = {'Hide', 'Maximize', 'Close' }
+
+
+config.hide_tab_bar_if_only_one_tab = true
+config.initial_rows = 25
+config.initial_cols = 90
+-- config.initial_rows = 20
+-- config.initial_cols = 80
+-- config.initial_rows = 20
+-- config.initial_cols = 70
 
 -- config.automatically_reload_config = true
-
 -- Confirmar al Cerrar terminal
 -- config.window_close_confirmation = 'AlwaysPrompt'
 
@@ -185,22 +199,21 @@ config.keys = {{
         flags = 'FUZZY|TABS'
     }
 }, -- TODO
- {
+{
     key = 'F12',
     mods = '',
     action = wezterm.action.ToggleFullScreen
-},
-{
+}, {
     key = ':',
     mods = 'CTRL|SHIFT',
     action = wezterm.action.SplitVertical
-},
-{
+}, {
     key = 'w',
     mods = 'CTRL|SHIFT',
-    action = wezterm.action.CloseCurrentTab { confirm = false },
-  },
-}
+    action = wezterm.action.CloseCurrentTab {
+        confirm = false
+    }
+}}
 
 -- MENU
 config.launch_menu = {{
@@ -218,5 +231,4 @@ config.launch_menu = {{
 config.set_environment_variables = {
     prompt = '$E]7;file://localhost/$P$E\\$E[32m$T$E[0m $E[35m$P$E[36m$_$G$E[0m '
 }
-
 return config
